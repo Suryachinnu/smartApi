@@ -22,15 +22,13 @@ router.post('/bill',(req,res)=>{
     })
 
 
-router.get('/bill', (req,res) =>{
-    if(!req.query.email && !req.query.password){
+router.get('/bills', (req,res) =>{
+    if(!req.query.email){
         res.status(400).send("request parameters missing")
     }
 
-    userModel.findOne({
-        "email":req.query.email,
-        "password":req.query.password
-
+    billModel.find({
+        "smart_user":req.query.email
     }).then(doc =>{
         if(!doc || doc.length===0){
             res.json({})

@@ -18,7 +18,7 @@ let billSchema = new mongoose.Schema({
     b_state:String,
     b_GSTIN:String,
     billNo:String,
-    date:String,
+    date:String,    
     ewaybill:String,
     d_note:String,
     mode_pay:String,
