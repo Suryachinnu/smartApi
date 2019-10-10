@@ -38,19 +38,33 @@ router.get('/bills', (req,res) =>{
         
     }).catch(err=>{
         res.status(500).json(err)
-    })
+    }) 
+})
+router.get('/viewBill', (req,res)=>{
+if(!req.query.id){
+    res.status(400).send("request parameters missing")
+}
+billModel.findOne({
+    '_id':req.query.id
+}).then(doc =>{
+    if(!doc || doc.length===0){
+        res.json({})
+    }else{
+        res.json(doc)
+    }
     
-    
+}).catch(err=>{
+    res.status(500).json(err)
+}) 
 })
 router.get('/profile', (req,res) =>{
     if(!req.query.email){
         res.status(400).send("request parameters missing")
     }
-
     userModel.findOne({
         "email":req.query.email
     }).then(doc =>{
-        if(!doc || doc.length===0){
+        if(!doc || Object.keys(doc).length===0){
             res.json({})
         }else{
             res.json(doc)
