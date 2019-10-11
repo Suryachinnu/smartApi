@@ -43,6 +43,7 @@ let billSchema = new mongoose.Schema({
         }
     ],  
     paid_amt:Number,
-    due:Number  
+    due:Number ,
+    createdDate:String 
 })
 module.exports = mongoose.model('SmartBill', billSchema);

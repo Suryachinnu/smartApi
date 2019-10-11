@@ -6,6 +6,7 @@ router.post('/bill',(req,res)=>{
     if(!req.body){
         return res.status(400).send("Request body is missing")
     }
+    req.body.createdDate= new Date().getDate()+"-"+new Date().getMonth()+"-"+new Date().getFullYear()
 
     let model = new billModel(req.body)
     console.log("user required===",req.body)
