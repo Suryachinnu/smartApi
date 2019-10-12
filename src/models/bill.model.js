@@ -32,7 +32,7 @@ let billSchema = new mongoose.Schema({
     buyers_ord_date:String,
     despatch_no:Number,
     bill_rr_no:Number,
-    vehicle_no:Number,
+    vehicle_no:String,
     items: [
         {
             name:String,
