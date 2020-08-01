@@ -35,8 +35,12 @@ router.get("/bills", (req, res) => {
     .then(doc => {
       if (!doc || doc.length === 0) {
         res.json({});
-      } else {
-        res.json(doc);
+      } else { 
+        let response = [...doc];
+        response.sort(function(a, b){
+          return a.billNo.split("-")[3] - b.billNo.split("-")[3]        
+        });      
+        res.json(response);
       }
     })
     .catch(err => {
